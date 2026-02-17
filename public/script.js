@@ -51,8 +51,7 @@ window.addToCart = (price) => {
     
     console.log(`Agregando ${price} al carrito...`);
 
-    cartTotal = cartTotal + price; 
-    
+    cartTotal = parseFloat(cartTotal) + parseFloat(price); 
     // Actualizar UI
     document.getElementById('cart-total').textContent = cartTotal;
     
@@ -63,9 +62,9 @@ window.addToCart = (price) => {
 };
 
 function filterProducts(e) {
-    const term = e.target.value;
+    const term = e.target.value.toLowerCase();
 
-    const filtered = productsData.filter(p => p.name.includes(term));
+    const filtered = productsData.filter(p => p.toLowerCase().name.includes(term));
     
     renderProducts(filtered);
 }

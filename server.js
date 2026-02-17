@@ -21,7 +21,7 @@ const products = [
         category: "Monitores",
         price: 450, 
         description: "Colores reales, refresco de 144hz.",
-        image: "/img/monitor-404.jpg" 
+        image: "https://images.unsplash.com/photo-1675151638325-6891dc1cccf0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
     },
     { 
         id: 3, 
@@ -51,16 +51,8 @@ app.get('/api/products', (req, res) => {
 
 // API: El developr hizo algo raro aqui, siempre deberia ser success
 app.post('/api/checkout', (req, res) => {
-    const shouldFail = Math.random() > 0.5;
     setTimeout(() => {
-        if (shouldFail) {
-            res.status(500).json({ 
-                error: "DB_CONNECTION_TIMEOUT", 
-                details: "El pool de conexiones está saturado." 
-            });
-        } else {
-            res.json({ success: true, orderId: "ORD-" + Math.floor(Math.random() * 10000) });
-        }
+        res.json({ success: true, orderId: "ORD-" + Math.floor(Math.random() * 10000) });
     }, 1500);
 });
 
